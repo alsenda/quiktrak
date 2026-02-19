@@ -36,11 +36,14 @@ describe("api endpoints", () => {
   });
 
   it("toggles favorite shape", async () => {
-    const response = await request(createApp()).post("/api/favorites/inception");
+    const listResponse = await request(createApp()).get("/api/movies");
+    const firstId = listResponse.body[0].id as string;
+
+    const response = await request(createApp()).post(`/api/favorites/${firstId}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toMatchObject({
-      id: "inception",
+      id: firstId,
       favorite: true
     });
   });
