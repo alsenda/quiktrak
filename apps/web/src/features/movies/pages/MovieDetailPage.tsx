@@ -1,7 +1,7 @@
 import { use } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
-import { getMovieByIdResource } from "../lib/resources";
+import { getMovieByIdResource } from "../../../lib/resources";
 
 const MovieDetailPage = () => {
   const { id = "" } = useParams();

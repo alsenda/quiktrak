@@ -2,8 +2,8 @@ import { render, screen } from "@testing-library/react";
 import { MemoryRouter, Route, Routes } from "react-router-dom";
 import { describe, expect, it, vi } from "vitest";
 
-import MovieDetailPage from "../pages/MovieDetailPage";
-import MoviesPage from "../pages/MoviesPage";
+import MovieDetailPage from "../features/movies/pages/MovieDetailPage";
+import MoviesPage from "../features/movies/pages/MoviesPage";
 
 const movieFixture = {
   id: "tt0111161",

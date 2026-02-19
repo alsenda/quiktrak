@@ -83,8 +83,7 @@ a {
   gap: 0.55rem;
 }
 
-.movie-search-form input,
-.movie-search-form button {
+.movie-search-form input {
   font: inherit;
   border: none;
 }
@@ -102,6 +101,23 @@ a {
   color: $color-text;
   border-radius: 0.55rem;
   padding: 0.65rem 0.95rem;
+  cursor: pointer;
+}
+
+.sort-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.sort-controls__button {
+  font: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.55rem;
+  background: $color-card;
+  color: $color-text;
+  padding: 0.5rem 0.75rem;
   cursor: pointer;
 }
 
