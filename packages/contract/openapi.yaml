@@ -1,0 +1,93 @@
+openapi: 3.0.3
+info:
+  title: Quiktrak Movie Catalog API
+  version: 0.0.0
+paths:
+  /api/health:
+    get:
+      responses:
+        "200":
+          description: Service health
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+  /api/movies:
+    get:
+      responses:
+        "200":
+          description: Movie list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Movie"
+  /api/movies/{id}:
+    get:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Movie detail
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Movie"
+        "404":
+          description: Movie not found
+  /api/favorites/{id}:
+    post:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Favorite toggled
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FavoriteToggleResponse"
+components:
+  schemas:
+    Movie:
+      type: object
+      required: [id, title, year, imageUrl, description, rating]
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        year:
+          type: integer
+        imageUrl:
+          type: string
+          format: uri
+        description:
+          type: string
+        rating:
+          type: number
+          minimum: 0
+          maximum: 10
+    HealthResponse:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [ok]
+    FavoriteToggleResponse:
+      type: object
+      required: [id, favorite]
+      properties:
+        id:
+          type: string
+        favorite:
+          type: boolean
