@@ -31,15 +31,13 @@ Small fullstack movie catalog monorepo with a contract-first API and a React 19 
   - `GET /api/health`
   - `GET /api/movies`
   - `GET /api/movies/:id`
-  - `POST /api/favorites/:id`
 
 ## React 19 Features Used
 
 - `use()` + Suspense for async data rendering
 - `React.lazy` for route-level lazy loading
 - Error Boundary around async route UI
-- Actions + `useActionState` for search form state
-- `useOptimistic` for favorite toggle UX
+- Debounced search on keydown (300ms) for movie filtering
 
 ## Install
 
@@ -94,6 +92,17 @@ npm --workspace @quiktrak/web run build
 - **Fresh install / lockfile drift**
   - Run `npm install` from repo root before lint/test/build.
 
+## Search Behavior
+
+- Movie search runs while typing on `keydown` events.
+- Search input is debounced by `300ms` before applying filtering.
+
+## Pagination
+
+- Movies list uses client-side pagination.
+- Default page size is `12` movies per page.
+- Pagination controls include **Previous** and **Next** plus current page indicator.
+
 ## Definition of Done Verification
 
 ### User-visible
@@ -105,7 +114,7 @@ npm --workspace @quiktrak/web run build
 
 ### Engineering
 
-- [x] React 19 features present (`use`, Suspense, lazy, Error Boundary, `useActionState`, `useOptimistic`)
+- [x] React 19 features present (`use`, Suspense, lazy, Error Boundary)
 - [x] SCSS structure includes partials, variables, mixins, and global base styles
 - [x] TypeScript strict configuration enabled across workspaces
 - [x] ESLint passes

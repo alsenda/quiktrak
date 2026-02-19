@@ -31,12 +31,6 @@ vi.mock("../lib/resources", () => {
   };
 });
 
-vi.mock("../lib/api", () => {
-  return {
-    toggleFavorite: async () => ({ id: "tt0111161", favorite: true })
-  };
-});
-
 describe("web pages", () => {
   it("renders movie items on list page", async () => {
     render(
@@ -57,7 +51,9 @@ describe("web pages", () => {
       </MemoryRouter>
     );
 
-    expect(await screen.findByRole("heading", { name: "The Shawshank Redemption" })).toBeInTheDocument();
+    expect(
+      await screen.findByRole("heading", { name: "The Shawshank Redemption", level: 2 })
+    ).toBeInTheDocument();
   });
 
   it("handles invalid id", async () => {

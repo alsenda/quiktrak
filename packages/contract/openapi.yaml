@@ -40,21 +40,6 @@ paths:
                 $ref: "#/components/schemas/Movie"
         "404":
           description: Movie not found
-  /api/favorites/{id}:
-    post:
-      parameters:
-        - in: path
-          name: id
-          required: true
-          schema:
-            type: string
-      responses:
-        "200":
-          description: Favorite toggled
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/FavoriteToggleResponse"
 components:
   schemas:
     Movie:
@@ -83,11 +68,3 @@ components:
         status:
           type: string
           enum: [ok]
-    FavoriteToggleResponse:
-      type: object
-      required: [id, favorite]
-      properties:
-        id:
-          type: string
-        favorite:
-          type: boolean

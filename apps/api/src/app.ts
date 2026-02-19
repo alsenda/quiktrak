@@ -1,5 +1,4 @@
 import {
-  favoriteToggleResponseSchema,
   healthResponseSchema,
   movieListSchema,
   movieSchema
@@ -19,7 +18,6 @@ const sendValidated = <T>(res: Response, schema: { parse: (value: unknown) => T 
 
 export const createApp = (): Express => {
   const app = express();
-  const favorites = new Set<string>();
 
   app.use(cors());
   app.use(express.json());
@@ -40,25 +38,6 @@ export const createApp = (): Express => {
     }
 
     return sendValidated(res, movieSchema, movie);
-  });
-
-  app.post("/api/favorites/:id", (req, res) => {
-    const movie = movies.find((item) => item.id === req.params.id);
-
-    if (!movie) {
-      return res.status(404).json({ message: "Movie not found" });
-    }
-
-    if (favorites.has(movie.id)) {
-      favorites.delete(movie.id);
-    } else {
-      favorites.add(movie.id);
-    }
-
-    return sendValidated(res, favoriteToggleResponseSchema, {
-      id: movie.id,
-      favorite: favorites.has(movie.id)
-    });
   });
 
   app.use("*", (_req, res) => {

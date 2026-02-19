@@ -8,10 +8,23 @@ type Props = {
 export const AppShell = ({ children }: Props) => {
   return (
     <BrowserRouter>
-      <main className="app-shell">
-        <h1>Movie Catalog</h1>
-        {children}
-      </main>
+      <div className="site-layout">
+        <header className="site-header">
+          <div className="site-header__main">
+            <div className="site-header__main-container">
+              <p className="site-logo">movie catalog</p>
+            </div>
+          </div>
+        </header>
+
+        <main className="app-shell">{children}</main>
+
+        <footer className="site-footer">
+          <p>
+            Designed by alsenda
+          </p>
+        </footer>
+      </div>
     </BrowserRouter>
   );
 };
