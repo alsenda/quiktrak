@@ -93,3 +93,21 @@ npm --workspace @quiktrak/web run build
   - Stop old processes using `3001` or `5173`, then rerun `npm run dev`.
 - **Fresh install / lockfile drift**
   - Run `npm install` from repo root before lint/test/build.
+
+## Definition of Done Verification
+
+### User-visible
+
+- [x] Movies grid/list page available at `/movies`
+- [x] Movie detail page available at `/movies/:id`
+- [x] Responsive UI (mobile-first styles, no horizontal overflow)
+- [x] Semantic HTML structure used for list/detail content
+
+### Engineering
+
+- [x] React 19 features present (`use`, Suspense, lazy, Error Boundary, `useActionState`, `useOptimistic`)
+- [x] SCSS structure includes partials, variables, mixins, and global base styles
+- [x] TypeScript strict configuration enabled across workspaces
+- [x] ESLint passes
+- [x] API/Web tests pass
+- [x] README includes setup, architecture, and troubleshooting
