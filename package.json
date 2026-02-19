@@ -12,7 +12,10 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "typecheck": "tsc -b --pretty false",
-    "test": "echo \"No tests yet\""
+    "test": "echo \"Run npm run test:api and npm run test:web\"",
+    "test:api": "npm --workspace @quiktrak/api run test",
+    "test:web": "npm --workspace @quiktrak/web run test",
+    "build:web": "npm --workspace @quiktrak/web run build"
   },
   "devDependencies": {
     "@eslint/js": "^9.20.0",
