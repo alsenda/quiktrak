@@ -15,12 +15,6 @@ export const healthResponseSchema = z.object({
   status: z.literal("ok")
 });
 
-export const favoriteToggleResponseSchema = z.object({
-  id: z.string(),
-  favorite: z.boolean()
-});
-
 export type Movie = z.infer<typeof movieSchema>;
 export type MovieListResponse = z.infer<typeof movieListSchema>;
 export type HealthResponse = z.infer<typeof healthResponseSchema>;
-export type FavoriteToggleResponse = z.infer<typeof favoriteToggleResponseSchema>;

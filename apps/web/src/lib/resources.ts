@@ -1,30 +1,19 @@
 import type { Movie } from "@quiktrak/contract";
-
 import { fetchMovieById, fetchMovies } from "./api";
 
 let moviesPromise: Promise<Movie[]> | null = null;
 const movieByIdPromiseMap = new Map<string, Promise<Movie | null>>();
 
-export const getMoviesResource = (): Promise<Movie[]> => {
-  moviesPromise ??= fetchMovies();
-
-  return moviesPromise;
-};
+export const getMoviesResource = (): Promise<Movie[]> =>
+  (moviesPromise ??= fetchMovies());
 
 export const getMovieByIdResource = (id: string): Promise<Movie | null> => {
-  if (!id) {
-    return Promise.resolve(null);
+  if (!id) return Promise.resolve(null);
+
+  let p = movieByIdPromiseMap.get(id);
+  if (!p) {
+    p = fetchMovieById(id);
+    movieByIdPromiseMap.set(id, p);
   }
-
-  const existingPromise = movieByIdPromiseMap.get(id);
-
-  if (existingPromise) {
-    return existingPromise;
-  }
-
-  const nextPromise = fetchMovieById(id);
-
-  movieByIdPromiseMap.set(id, nextPromise);
-
-  return nextPromise;
+  return p;
 };

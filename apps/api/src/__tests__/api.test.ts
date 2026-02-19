@@ -35,19 +35,6 @@ describe("api endpoints", () => {
     expect(response.status).toBe(404);
   });
 
-  it("toggles favorite shape", async () => {
-    const listResponse = await request(createApp()).get("/api/movies");
-    const firstId = listResponse.body[0].id as string;
-
-    const response = await request(createApp()).post(`/api/favorites/${firstId}`);
-
-    expect(response.status).toBe(200);
-    expect(response.body).toMatchObject({
-      id: firstId,
-      favorite: true
-    });
-  });
-
   it("returns 404 for unknown route", async () => {
     const response = await request(createApp()).get("/api/unknown");
 
