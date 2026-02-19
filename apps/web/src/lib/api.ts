@@ -1,4 +1,10 @@
-import { movieListSchema, movieSchema, type Movie } from "@quiktrak/contract";
+import {
+  favoriteToggleResponseSchema,
+  movieListSchema,
+  movieSchema,
+  type FavoriteToggleResponse,
+  type Movie
+} from "@quiktrak/contract";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? "http://localhost:3001";
 
@@ -30,4 +36,16 @@ export const fetchMovieById = async (id: string): Promise<Movie | null> => {
   }
 
   return movieSchema.parse(await response.json());
+};
+
+export const toggleFavorite = async (id: string): Promise<FavoriteToggleResponse> => {
+  const response = await fetch(`${API_BASE_URL}/api/favorites/${id}`, {
+    method: "POST"
+  });
+
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+
+  return favoriteToggleResponseSchema.parse(await response.json());
 };
