@@ -47,7 +47,7 @@ npm install
 
 ## Run Locally
 
-Run API + Web concurrently:
+From the repository root, `npm run dev` runs the whole application (API + Web) concurrently:
 
 ```bash
 npm run dev
@@ -55,6 +55,8 @@ npm run dev
 
 - API: `http://localhost:3001`
 - Web: `http://localhost:5173`
+
+If you want to run only one workspace, use the workspace commands below.
 
 ## Quality Gates
 
