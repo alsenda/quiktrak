@@ -1,6 +1,6 @@
 ﻿# Quiktrak Movie Catalog
 
-Small fullstack movie catalog monorepo with a contract-first API and a React 19 web app.
+Small fullstack movie catalog monorepo with a contract-first API and a React 19 web app. The reason to choose React instead of Angular is because I want to explore the new features in version 19 and modern React patters. Additionally React has been my main framework for years.
 
 ## Monorepo Structure
 
